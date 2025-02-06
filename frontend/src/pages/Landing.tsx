@@ -6,6 +6,7 @@ import { IoCloudDoneOutline } from "react-icons/io5";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import { CiGlobe } from "react-icons/ci";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router";
 
 
 const features: {name: string, icon: ReactNode, description: string}[] = [
@@ -26,6 +27,7 @@ const features: {name: string, icon: ReactNode, description: string}[] = [
     },
 ]
 export default function Landing() {
+    const navigate = useNavigate()
     return(
         <div className="bg-gray-100 flex flex-col items-center">
             <Header />
@@ -34,7 +36,7 @@ export default function Landing() {
                 <div className="w-full h-full flex flex-col items-center justify-center text-white text-3xl md:text-6xl xl:text-8xl font-bold">
                     <p className="z-10"><span className="text-primary-orange">Capture,</span> <span className="text-primary-blue">organize,</span> <span className="text-green-600">share</span></p>
                     <p className="z-10">Your Visual story.</p>
-                    <div className="z-10 flex items-center mt-10 text-lg font-light bg-white/10 border rounded-md border-white px-20 py-2 cursor-pointer hover:bg-white hover:text-black hover:gap-1 text-white transition-all ease-in-out duration-200">
+                    <div onClick={() => navigate("/auth/register")} className="z-10 flex items-center mt-10 text-lg font-light bg-white/10 border rounded-md border-white px-20 py-2 cursor-pointer hover:bg-white hover:text-black hover:gap-1 text-white transition-all ease-in-out duration-200">
                         <p>Get started</p>
                         <GoArrowUpRight />
                     </div>
@@ -99,8 +101,8 @@ export default function Landing() {
             {/* TESTIMONIALS SECTION */}
             <div className="mt-10 flex flex-col gap-4">
                 <p className="text-4xl font-bold">Clients about our work</p>
-                <div className="bg-primary-blue/40 rounded-4xl min-h-5">
-
+                <div className="max-w[900px]">
+                    {/* add testimonials here */}
                 </div>
             </div>
             <Footer />
