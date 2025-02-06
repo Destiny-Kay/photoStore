@@ -1,0 +1,20 @@
+services:
+  backend:
+    container_name: photo_share_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+  
+  client:
+    container_name: photo_share_client
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env
