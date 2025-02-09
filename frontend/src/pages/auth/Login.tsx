@@ -5,9 +5,7 @@ import { useNavigate } from "react-router";
 export default function Login() {
     const navigate = useNavigate()
     const handleLogin =() => {
-        // This is the google link here
-        // window.location.href = " http://127.0.0.1:8000/accounts/google/login"
-         window.location.href = "http://127.0.0.1:8000/login/redirect"
+        window.location.href = `${import.meta.env.VITE_API_URL}/login/redirect`
     }
     console.log(import.meta.env)
     return(

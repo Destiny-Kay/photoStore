@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/auth'>
           <Route path='register' element={<Register />}/>
           <Route path='login' element={<Login />}/>
-          <Route path='login/callback' element={<GoogleRedirectHandler />} />
+          <Route path='google-redirect' element={<GoogleRedirectHandler />} />
         </Route>
         <Route path='app'>
           <Route path='home' element={<Home />} />

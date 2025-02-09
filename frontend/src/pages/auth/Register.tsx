@@ -1,20 +1,12 @@
 import { BiChevronRight } from "react-icons/bi"
 import { useNavigate } from "react-router"
 import AuthLayout from "./AuthLayout"
-import apiClient from "../../lib/apiClient"
 
 
 export default function Register() {
     const navigate = useNavigate()
     const handleSignup = () => {
-    //    apiClient.post("users")
-    window.location.href = "http://127.0.0.1:8000/google-login"
-    // apiClient.get('/auth/google/')
-    // .then(res => {
-    //     window.location.href = res.data.auth_url
-    // }).catch(err => {
-    //     console.error(err)
-    // })
+    window.location.href = `${import.meta.env.VITE_API_URL}/login/redirect`
     }
     return(
         <AuthLayout>

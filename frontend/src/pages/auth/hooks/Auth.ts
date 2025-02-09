@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export const useAuth = () =>{
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() =>{
         const auth = async() => {
@@ -22,18 +23,19 @@ export const useAuth = () =>{
     }, [])
     
     const validateGoogleToken = async (googleAccessToken: string): Promise<boolean> => {
-        apiClient.post("/google-validate", {
-            access_token: googleAccessToken
-        })
-        .then(res => {
-            if (res.status === 200) {
-                localStorage.setItem(GOOGLE_ACCESS_TOKEN, googleAccessToken)
+        try {
+            const res = await apiClient.post("/google-validate/", {
+                access_token: googleAccessToken
+            })
+
+            if (res.status == 200) {
                 return true
             }
-        }).catch(err => {
+        } catch (err) {
             console.error(err)
-            return false
-        })
+        } finally {
+            setIsLoading(false)
+        }
         return false
     }
 
@@ -43,5 +45,5 @@ export const useAuth = () =>{
         window.location.reload()
     }
 
-    return { isAuthenticated, logout}
+    return { isLoading, isAuthenticated, logout }
 }

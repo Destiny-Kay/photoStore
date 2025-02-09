@@ -8,21 +8,14 @@ export default function GoogleRedirectHandler() {
 
     useEffect(() =>{
         const queryParams = new URLSearchParams(window.location.search)
-        const accessToken = queryParams.get(('access_token'))
+        const accessToken = queryParams.get(('tkn'))
+        console.log(accessToken)
         
         if (accessToken) {
-            console.log('Inside the function to authenticate')
             localStorage.setItem(GOOGLE_ACCESS_TOKEN, accessToken)
-            // Make api call to validate the user before logging in
             navigate('/app/home')
         } 
-        // else {
-        //     // No token founds
-        //     console.log('No token found')
-        //     navigate('/')
-        // }
-
-    },[])
+    },[navigate])
     return(
         <div>
             Logging In.....
