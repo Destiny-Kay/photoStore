@@ -1,14 +1,20 @@
 import { BiChevronRight } from "react-icons/bi"
 import { useNavigate } from "react-router"
 import AuthLayout from "./AuthLayout"
+import apiClient from "../../lib/apiClient"
 
 
 export default function Register() {
     const navigate = useNavigate()
     const handleSignup = () => {
-        // We don't actually need a toast because the screens will be handled by google
-        // toast.success("button clicked")
-        alert("Open google screen")
+    //    apiClient.post("users")
+    window.location.href = "http://127.0.0.1:8000/google-login"
+    // apiClient.get('/auth/google/')
+    // .then(res => {
+    //     window.location.href = res.data.auth_url
+    // }).catch(err => {
+    //     console.error(err)
+    // })
     }
     return(
         <AuthLayout>
@@ -18,7 +24,7 @@ export default function Register() {
                 <p>Keep your memories safe</p>
                 <div onClick={handleSignup} className="border border-primary-blue rounded-2xl p-2 flex gap-4 items-center justify-center cursor-pointer">
                     <img src="/google.png" className="w-10 h-10"/>
-                    <p>Sign up with google</p>
+                    <p>continue with google</p>
                     <BiChevronRight/>
                 </div>
             </div>

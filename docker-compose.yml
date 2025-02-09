@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - ./backend/.env
   
   client:
     container_name: photo_share_client
@@ -17,4 +17,4 @@ services:
     ports:
       - "5173:5173"
     env_file:
-      - .env
+      - ./frontend/.env
