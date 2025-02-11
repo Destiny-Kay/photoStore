@@ -4,3 +4,7 @@
     --color-primary-orange: #F49D37;
     --color-primary-blue: #3F88C5;
 }
+
+.aspect-ratio-auto {
+    aspect-ratio: auto;
+}

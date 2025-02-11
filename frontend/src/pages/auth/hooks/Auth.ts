@@ -1,11 +1,15 @@
 import apiClient from "../../../lib/apiClient";
 import { GOOGLE_ACCESS_TOKEN } from "../../../constants/tokenVals";
 import { useEffect, useState } from "react";
+import { UserData } from "../../../types/types";
+import { useNavigate } from "react-router";
 
 
 export const useAuth = () =>{
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const [userData, setUserData] = useState<Partial<UserData>>({})
+    const navigate = useNavigate()
 
     useEffect(() =>{
         const auth = async() => {
@@ -29,6 +33,7 @@ export const useAuth = () =>{
             })
 
             if (res.status == 200) {
+                setUserData(res.data.user_data)
                 return true
             }
         } catch (err) {
@@ -42,8 +47,8 @@ export const useAuth = () =>{
     const logout = () => {
         localStorage.removeItem(GOOGLE_ACCESS_TOKEN)
         setIsAuthenticated(false)
-        window.location.reload()
+        navigate('/')
     }
 
-    return { isLoading, isAuthenticated, logout }
+    return { isLoading, isAuthenticated, userData, logout }
 }

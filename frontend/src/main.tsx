@@ -7,10 +7,16 @@ import Register from './pages/auth/Register.tsx'
 import Login from './pages/auth/Login.tsx'
 import Home from './pages/app/Home.tsx'
 import GoogleRedirectHandler from './components/GoogleRedirectHandler.tsx'
+import { Toaster } from 'sonner'
+import UserAlbums from './pages/app/userAlbums.tsx'
+import AlbumDetail from './pages/app/Album.tsx'
+// import PhotoViewer from './pages/app/PhotoViewer.tsx'
+import PhotoViewer from './pages/app/PhotoViewer.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+      <Toaster position='top-center' richColors/>
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/auth'>
@@ -20,6 +26,9 @@ createRoot(document.getElementById('root')!).render(
         </Route>
         <Route path='app'>
           <Route path='home' element={<Home />} />
+          <Route path='users/:userId' element={<UserAlbums />} />
+          <Route path='albums/:albumId' element={<AlbumDetail />} />
+          <Route path='photo/:photoId' element={<PhotoViewer />} />
         </Route>
       </Routes>
     </BrowserRouter>
