@@ -55,7 +55,7 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
+    name = models.CharField(max_length=255, null=True, blank=True)
     # This should potentially be an encrypted field
     jwt_key = models.UUIDField(default=uuid.uuid4)
 
