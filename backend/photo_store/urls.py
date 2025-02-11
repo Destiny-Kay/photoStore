@@ -1,6 +1,8 @@
 from django.urls import path
 from .apis import GoogleLoginApi, GoogleLoginRedirectApi, ValidateGoogleToken
 from .views import GetUsersView, AlbumViewSet, AlbumPhotosView, PhotoViewSet, NumUserAlbums,UserAlbums
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("login/callback/", GoogleLoginApi.as_view(), name="callback"),
@@ -22,11 +24,16 @@ urlpatterns = [
         'delete': 'destroy'
     })),
     path("photos/<uuid:pk>", PhotoViewSet.as_view({
-        'get': 'retrieve'
+        'get': 'retrieve',
+        'patch' : 'partial_update'
     })),
     path("albums/<uuid:pk>", AlbumViewSet.as_view({
-        'get': 'list',
+        'get': 'retrieve',
         'delete': 'destroy'
     })),
-    path("album/<uuid:album_id>/photos", AlbumPhotosView.as_view())
+    path("albums/<uuid:album_id>/photos", AlbumPhotosView.as_view())
 ]
+
+# serve media files in dev
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -76,6 +76,8 @@ class Album(BaseModel):
     user = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.title
 
 class Photo(BaseModel):
     '''photo model'''
@@ -83,3 +85,6 @@ class Photo(BaseModel):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to="photos")
+
+    def __str__(self):
+        return self.title
