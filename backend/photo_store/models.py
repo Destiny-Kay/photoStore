@@ -55,7 +55,7 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
+    name = models.CharField(max_length=255, null=True, blank=True)
     # This should potentially be an encrypted field
     jwt_key = models.UUIDField(default=uuid.uuid4)
 
@@ -76,6 +76,8 @@ class Album(BaseModel):
     user = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.title
 
 class Photo(BaseModel):
     '''photo model'''
@@ -83,3 +85,6 @@ class Photo(BaseModel):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to="photos")
+
+    def __str__(self):
+        return self.title

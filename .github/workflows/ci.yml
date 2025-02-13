@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - prod
+  pull_request:
+    branches:
+      -prod
+  
+jobs:
+  frontend-lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # checkout repo
+      - name: checkout code
+        uses: actions/checkout@v3
+      # setup Node
+      - name: Set up NOde.js
+        uses: actins/setup-node@v3
+        with:
+          node-version: 22
+          cache: 'yarn'
+      # chache dependencies
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v3
+        with:
+          path: frontend/node_modules
+          key: frontend-yarn-deps-${{ runner.os }}-${{ hashFiles('frontend/yarn.lock') }}
+          restore-keys: |
+            frontend-yarn-deps-${{ runner.os }}-
+      
+      - name: Navigate to frontend folder
+        run: cd frontend
+      # install dependencies
+      - name: Install frontend dependencies
+        run: yarn install --frozen-lockfile
+      # Run tests and linting
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Run Tests
+        run: yarn test

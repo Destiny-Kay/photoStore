@@ -66,11 +66,12 @@ class GoogleLoginApi(PublicApi):
         user_info = google_login_flow.get_user_info(google_tokens=google_tokens)
 
         user_email = id_token_decoded["email"]
+        user_name = id_token_decoded["given_name"]
         # Get user information
         # Get user if they do not exist then create them
 
         # &&&&
-        user = BaseUser.objects.get_or_create(email=user_email)
+        user = BaseUser.objects.get_or_create(email=user_email, name=user_name)
         # &&&&&
         # user = get_object_or_404(BaseUser, email=user_email)
         # login(request, user)
@@ -96,5 +97,12 @@ class ValidateGoogleToken(PublicApi):
 
         # confirm user exists
         user = get_object_or_404(BaseUser, email=decoded_token.get('email'))
+        print(decoded_token)
         # login the user
-        return Response({'detail': 'token verified successfully'}, status=status.HTTP_200_OK)
+        return Response({
+            'detail': 'token verified successfully',
+            'user_data':{
+                'profile_photo': decoded_token.get('picture'),
+                'name': f"{decoded_token.get('given_name')} {decoded_token.get('family_name')}"\
+            }
+            }, status=status.HTTP_200_OK)
