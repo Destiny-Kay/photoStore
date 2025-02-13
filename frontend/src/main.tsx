@@ -10,7 +10,6 @@ import GoogleRedirectHandler from './components/GoogleRedirectHandler.tsx'
 import { Toaster } from 'sonner'
 import UserAlbums from './pages/app/userAlbums.tsx'
 import AlbumDetail from './pages/app/Album.tsx'
-// import PhotoViewer from './pages/app/PhotoViewer.tsx'
 import PhotoViewer from './pages/app/PhotoViewer.tsx'
 
 createRoot(document.getElementById('root')!).render(

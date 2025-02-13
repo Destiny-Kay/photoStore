@@ -63,8 +63,8 @@ export default function Landing() {
             {/* SEARCH SECTION */}
             <div className="mt-10 flex flex-col gap-4">
                 <p className="text-4xl font-bold">Search memories easily</p>
-                <div className="bg-primary-blue/40 rounded-4xl min-h-5">
-
+                <div className="bg-primary-blue/40 rounded-4xl min-h-5 w-full">
+                    <p>asd</p>
                 </div>
             </div>
             {/* ORGANIZ SECTION */}
@@ -75,7 +75,7 @@ export default function Landing() {
                 </div>
             </div>
             {/* SAFETY SECTION */}
-            <div className="flex flex-col items-center mt-10 bg-primary-blue/40 p-2 lg:p-6 rounded-4xl">
+            <div className="flex flex-col items-center mt-10 bg-primary-blue/40 p-2 lg:p-6 rounded-4xl mx-2">
                 <p className="text-4xl font-bold">Your Photos are safe</p>
                 <div className="grid lg:grid-cols-2 gap-4">
                     <div className="lg:col-span-2 m-auto mt-10 grid lg:grid-cols-2 bg-blue-500 rounded-4xl">
@@ -100,7 +100,7 @@ export default function Landing() {
             </div>
             {/* TESTIMONIALS SECTION */}
             <div className="mt-10 flex flex-col gap-4">
-                <p className="text-4xl font-bold">Clients about our work</p>
+                {/* <p className="text-4xl font-bold">Clients about our work</p> */}
                 <div className="max-w[900px]">
                     {/* add testimonials here */}
                 </div>

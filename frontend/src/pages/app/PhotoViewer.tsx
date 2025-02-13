@@ -84,7 +84,7 @@ export default function PhotoViewer(){
                     :
                     <div className="flex gap-4">
                         <p>{photoDetails.title}</p>
-                        <LuPen onClick={handleSetEditable} className="cursor-pointer"/>
+                        <LuPen onClick={handleSetEditable} className="cursor-pointer" data-testid="EditPhotoIcon"/>
                     </div>
                 }
             </div>
