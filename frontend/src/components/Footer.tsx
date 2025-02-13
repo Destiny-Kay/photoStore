@@ -24,7 +24,7 @@ const socials: {name: string,icon: ReactNode, link: string}[] = [
 export default function Footer() {
     const year = new Date().getFullYear()
     return(
-        <footer className="flex flex-col items-center w-full gap-4 py-10 mt-10 bg-black/10">
+        <footer className="flex flex-col items-center w-full gap-4 py-10 px-4 mt-10 bg-black/10">
             <div className="w-full flex flex-wrap justify-evenly gap-4">
                 <div className="flex flex-col gap-4">
                     <p>Get your photos organized and securely stored with photostore.</p>
@@ -38,17 +38,16 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="flex flex-col">
                     <p className="text-lg font-bold">Application</p>
-                    <p>Some link here</p>
-                    <p>Some link here</p>
-                    <p>Some link here</p>
+                    <Link to={'/auth/register'}>Get started</Link>
+                    <Link to={'/auth/login'}>Login to account</Link>
                 </div>
                 <div>
                     <p className="text-lg font-bold">Legal</p>
-                    <p>Some link here</p>
-                    <p>Some link here</p>
-                    <p>Some link here</p>
+                    <p>Privacy policy</p>
+                    <p>Terms of use</p>
+                    <p>FAQs</p>
                 </div>
             </div>
             <div className="flex flex-col items-center">
