@@ -13,12 +13,13 @@ class BaseModel(models.Model):
         abstract = True
 
 class BaseUserManager(BUM):
-    def create_user(self, email, is_active=True, is_admin=False, password=None):
+    def create_user(self, email, name, is_active=True, is_admin=False, password=None):
         if not email:
             raise ValueError("Users must have an email address")
 
         user = self.model(
             email=self.normalize_email(email.lower()),
+            name=name,
             is_active=is_active,
             is_admin=is_admin,
         )
@@ -36,6 +37,7 @@ class BaseUserManager(BUM):
     def create_superuser(self, email, password=None):
         user = self.create_user(
             email=email,
+            name="admin",
             is_active=True,
             is_admin=True,
             password=password,

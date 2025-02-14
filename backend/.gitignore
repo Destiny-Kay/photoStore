@@ -1,4 +1,3 @@
 __pycache__/
 db.sqlite3
 # photos and files stored by django during development
-media/
