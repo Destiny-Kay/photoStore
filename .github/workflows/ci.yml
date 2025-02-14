@@ -32,10 +32,9 @@ jobs:
           restore-keys: |
             frontend-yarn-deps-${{ runner.os }}-
       
-      - name: Navigate to frontend folder
-        run: cd frontend
       # install dependencies
       - name: Install frontend dependencies
+        working-directory: frontend
         run: yarn install --frozen-lockfile
       # Run tests and linting
       - name: Run ESLint
