@@ -61,19 +61,19 @@ export default function Landing() {
             </div>
             
             {/* SEARCH SECTION */}
-            <div className="mt-10 flex flex-col gap-4">
+            {/* <div className="mt-10 flex flex-col gap-4">
                 <p className="text-4xl font-bold">Search memories easily</p>
                 <div className="bg-primary-blue/40 rounded-4xl min-h-5 w-full">
                     <p>asd</p>
                 </div>
-            </div>
+            </div> */}
             {/* ORGANIZ SECTION */}
-            <div className="mt-10 flex flex-col gap-4">
+            {/* <div className="mt-10 flex flex-col gap-4">
                 <p className="text-4xl font-bold">Organize your photos with ease</p>
                 <div className="bg-primary-blue/40 rounded-4xl min-h-5">
 
                 </div>
-            </div>
+            </div> */}
             {/* SAFETY SECTION */}
             <div className="flex flex-col items-center mt-10 bg-primary-blue/40 p-2 lg:p-6 rounded-4xl mx-2">
                 <p className="text-4xl font-bold">Your Photos are safe</p>
